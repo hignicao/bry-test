@@ -1,0 +1,29 @@
+name: Deploy to Kubernetes
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Deploy Application
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: "Simulate Deploy by listing files"
+      run: |
+        echo "Arquivos que seriam aplicados:"
+        ls -R k8s/
+
+    - name: Install and configure kubectl
+      run: |
+        curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+        sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+        echo "kubectl instalado."
+        echo "Em um cenário real, o kubeconfig seria configurado aqui."
+        # Exemplo de comando que seria executado
+        echo "Executando: kubectl apply -f k8s/whoami-app.yaml"
