@@ -26,7 +26,7 @@ Os principais componentes da arquitetura são:
 
 ---
 
-## ✨ Principais Funcionalidades
+## Principais Funcionalidades
 
 -   [x] **Alta Disponibilidade:** Cluster Kubernetes com 2 nós workers e aplicação com 2 réplicas.
 -   [x] **Infraestrutura como Código:** Todo o ambiente é provisionado via código.
@@ -38,7 +38,7 @@ Os principais componentes da arquitetura são:
 
 ---
 
-## 🛠️ Stack de Tecnologias
+## Stack de Tecnologias
 
 * **Containers:** Docker, K3s, K3d
 * **Orquestração:** Kubernetes
