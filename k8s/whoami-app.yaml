@@ -15,10 +15,10 @@ spec:
         app: whoami
     spec:
       containers:
-      - name: whoami
-        image: traefik/whoami
-        ports:
-        - containerPort: 80
+        - name: whoami
+          image: traefik/whoami
+          ports:
+            - containerPort: 80
 ---
 apiVersion: v1
 kind: Service
@@ -41,17 +41,17 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: "whoami.hugoignacio.ip-ddns.com"
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: whoami-service
-            port:
-              number: 80
+    - host: "whoami.hugoignacio.ip-ddns.com"
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: whoami-service
+                port:
+                  number: 80
   tls:
-  - hosts:
-    - "whoami.hugoignacio.ip-ddns.com"
-    secretName: whoami-tls
+    - hosts:
+        - "whoami.hugoignacio.ip-ddns.com"
+      secretName: whoami-tls
